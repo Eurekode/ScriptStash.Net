@@ -1,0 +1,4 @@
+{
+  "[CSV_FIELDS]": "name, family, age, city, phone",
+  "[USERS_CONDITION]": "age > 17"
+}

@@ -1,0 +1,1 @@
+﻿https://www.metaweather.com/api/location/WEOID/YYYY/MM/DD/

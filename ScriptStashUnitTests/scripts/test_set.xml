@@ -1,0 +1,16 @@
+<ConfigSet>
+  <Config>
+    <DESC>London on a 27th Apr 2013</DESC>
+    <WEOID>44418</WEOID>
+    <YYYY>2013</YYYY>>
+    <MM>4</MM>
+    <DD>27</DD>
+  </Config>
+  <Config>
+    <DESC>San Francisco on 30th April 2013</DESC>
+    <WEOID>2487956</WEOID>
+    <YYYY>2013</YYYY>>
+    <MM>4</MM>
+    <DD>30</DD>
+  </Config>
+</ConfigSet>
