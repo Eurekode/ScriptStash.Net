@@ -30,6 +30,9 @@ Usage examples:
   string sqlText2 = myStash[genTemplateTableQuery].InjectTokens();
 ``` 
 **[!]** For more indepth example please chek next Gist : [Stash example - SQL queries](https://gist.github.com/Eurekode/50e20e5df20afc8435b2a9a5dcc6fa2c)
+
+## Documentation
+Check out **ScriptStash** documentation pages [here](https://eurekode.github.io/script_stash_documentations/index.html).
   
 ## License
 This project is MIT licensed. For more information, see [license](LICENSE).
