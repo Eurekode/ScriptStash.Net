@@ -1,4 +1,4 @@
-# ScriptStash 
+# ScriptStash ![ScriptStash Logo](/ScriptStash/package/scriptstash_nuget_logo.png)
 
 ## What is ...
 **ScriptStash** is a C# code loader for text/script files manipulation. It loads each script file once. Keeping it stored in-memory, ready to be used for any applicative reuse over and over. Also, it can be used for token-driven scripting (e.g. place in script token for SELECT-SQL table name, changing the query target table dynamically at run-time).
@@ -29,7 +29,7 @@ Usage examples:
   myStash.Tokens["<where-clause>"] = "WHERE USER.City='Tel-Aviv";
   string sqlText2 = myStash[genTemplateTableQuery].InjectTokens();
 ``` 
-
+**[!]** For more indepth example please chek next Gist : [Stash example - SQL queries](https://gist.github.com/Eurekode/50e20e5df20afc8435b2a9a5dcc6fa2c)
   
 ## License
 This project is MIT licensed. For more information, see [license](LICENSE).
