@@ -4,7 +4,7 @@
 **ScriptStash** is a C# code loader for text/script files manipulation. It loads each script file once. Keeping it stored in-memory, ready to be used for any applicative reuse over and over. Also, it can be used for token-driven scripting (e.g. place in script token for SELECT-SQL table name, changing the query target table dynamically at run-time).
 
 ## How it works ...
-**ScriptStash** loads with **System.IO.File** each script at its destination folder and store it in-memory while your solution application running. Also, it can store dictionary key-value pairs for token injection to every stored tokenized script file. So, it can return the original file loaded, or a transformed text with all needed tokens replaced with values from given dictionary.
+**ScriptStash** loads with **System.IO.File** each script at its destination folder and store it in-memory while your solution application running. **ScriptStash** can store dictionary key-value pairs for token injection to every stored tokenized script file. So, it can return the original file loaded, or a transformed text with all needed tokens replaced with values from given dictionary.
 
 ## Usage ...
 Usage examples:
