@@ -1,5 +1,5 @@
 # ScriptStash ![ScriptStash Logo](/ScriptStash/package/scriptstash_nuget_logo.png)
-[![Version](https://img.shields.io/badge/nuget-v1.0.1-brightgreen.svg?logo=appveyor&longCache=true&style=plastic)](https://www.nuget.org/packages/ScriptStash.Net)
+[![Version](https://img.shields.io/badge/nuget-v2.0.0-brightgreen.svg?logo=appveyor&longCache=true&style=plastic)](https://www.nuget.org/packages/ScriptStash.Net)
 ## What is ...
 **ScriptStash** is a C# code loader for text/script files manipulation. It loads each script file once. Keeping it stored in-memory, ready to be used for any applicative reuse over and over. Also, it can be used for token-driven scripting (e.g. place in script token for SELECT-SQL table name, changing the query target table dynamically at run-time).
 
