@@ -23,11 +23,11 @@ Usage examples:
   :
   :
   ScriptStash mySqlStash = new ScriptStash(scriptsFolder, pattern);
-  string sqlText1 = myStash[genSelectAllQueryName].Text;
+  string sqlText1 = mySqlStash[genSelectAllQueryName].Text;
   :
-  myStash.Tokens["<table-name>"] = "USERS";
-  myStash.Tokens["<where-clause>"] = "WHERE USER.City='Tel-Aviv";
-  string sqlText2 = myStash[genTemplateTableQuery].InjectTokens();
+  mySqlStash.Tokens["<table-name>"] = "USERS";
+  mySqlStash.Tokens["<where-clause>"] = "WHERE USER.City='Tel-Aviv";
+  string sqlText2 = mySqlStash[genTemplateTableQuery].InjectTokens();
 ``` 
 **[!]** For more indepth example please chek next Gist : [Stash example - SQL queries](https://gist.github.com/Eurekode/50e20e5df20afc8435b2a9a5dcc6fa2c)
 
