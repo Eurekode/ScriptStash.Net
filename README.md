@@ -18,11 +18,11 @@ Usage examples:
 ``` C#
   string scriptsFolder = "c:\project\scripts";
   string pattern = "*.sql";
-  string genSelectAllQuery = "select_all_query.sql";
+  string genSelectAllQueryName = "select_all_query.sql";
   string genTemplateTableQuery = "template_table_query.sql";
   :
   :
-  ScriptStash mySqlStash = new ScriptStash(scriptsFolder, pattern);
+  Stash mySqlStash = new Stash(scriptsFolder, pattern);
   string sqlText1 = mySqlStash[genSelectAllQueryName].Text;
   :
   mySqlStash.Tokens["<table-name>"] = "USERS";
