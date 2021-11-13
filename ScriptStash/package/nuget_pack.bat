@@ -1,4 +1,4 @@
-REM  ...create NuGet package...
+REM  ...Create nuget package...
 CD "..\"
-nuget pack -Properties Configuration=Release -OutputDirectory ".\package"
+dotnet pack
 pause

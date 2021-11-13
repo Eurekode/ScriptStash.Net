@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web.Script.Serialization;
 using System.Xml.Linq;
+
+#if NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+using System.Text.Json;
+#elif NET40_OR_GREATER
+using System.Web.Script.Serialization;
+#endif
 
 namespace ScriptStash
 {
@@ -13,7 +18,7 @@ namespace ScriptStash
     /// </summary>
     public class Tokens : Dictionary<string, string>
     {
-        #region properties
+#region properties
         /// <summary>
         /// hides inherited indexr property.
         /// Get value by key if exist. Do not fail whan key not exist (return empty string).
@@ -49,9 +54,9 @@ namespace ScriptStash
             }
         }
 
-        #endregion properties
+#endregion properties
 
-        #region Constructors
+#region Constructors
         /// <summary>
         /// Default empty constructor.
         /// </summary>
@@ -68,10 +73,10 @@ namespace ScriptStash
         /// </summary>
         /// <param name="tokens">Source tokens of key:values to build the new tokens object.</param>
         public Tokens(Tokens tokens) : base(tokens as Dictionary<string, string>) { }
-        #endregion Constructors
+#endregion Constructors
 
-        #region public methods
-        #region operators
+#region public methods
+#region operators
         /// <summary>
         /// Append new token key:value pairs from another tokens instance.
         /// </summary>
@@ -90,9 +95,9 @@ namespace ScriptStash
 
             return result;
         }
-        #endregion operators
+#endregion operators
 
-        #region json Serialization/Deserialization factory
+#region json Serialization/Deserialization factory
         /// <summary>
         /// Static JSON parsing factory tool. Source file format should be simple flat key:value JSON string. <br />
         /// Example:                        <br />
@@ -118,8 +123,12 @@ namespace ScriptStash
             // convert json string
             try
             {
+#if NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+                tokens = JsonSerializer.Deserialize<Tokens>(json);
+#elif NET40_OR_GREATER
                 var jss = new JavaScriptSerializer();
                 tokens = jss.Deserialize<Tokens>(json);
+#endif
             }
             catch (Exception ex)
             {
@@ -157,10 +166,14 @@ namespace ScriptStash
             // load json file
             try
             {
+#if NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+                tokens = JsonSerializer.Deserialize<Tokens>(File.ReadAllText(file));
+#elif NET40_OR_GREATER
                 var jss = new JavaScriptSerializer();
                 tokens = jss.Deserialize<Tokens>(File.ReadAllText(file));
+#endif
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception($"Tokens.LoadJson has failed. Input file at : '{file}'.", ex);
             }
@@ -203,8 +216,13 @@ namespace ScriptStash
             // load json file
             try
             {
+#if NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+                tokensArray = JsonSerializer.Deserialize<List<Tokens>>(File.ReadAllText(file));
+#elif NET40_OR_GREATER
                 var jss = new JavaScriptSerializer();
                 tokensArray = jss.Deserialize<List<Tokens>>(File.ReadAllText(file));
+#endif
+
             }
             catch (Exception ex)
             {
@@ -255,8 +273,12 @@ namespace ScriptStash
 
             try
             {
+#if NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+                jsonText = JsonSerializer.Serialize(this);
+#elif NET40_OR_GREATER
                 var jss = new JavaScriptSerializer();
                 jsonText = jss.Serialize(this);
+#endif
             }
             catch (Exception ex)
             {
@@ -287,9 +309,9 @@ namespace ScriptStash
                 throw new Exception($"Tokens.SaveJson has failed. inner error : '{ex.Message}'.", ex);
             }
         }
-        #endregion json Serialization/Deserialization factory
+#endregion json Serialization/Deserialization factory
 
-        #region xml Serialization/Deserialization factory
+#region xml Serialization/Deserialization factory
         /// <summary>
         /// Static XML parsing factory tool. Source file format should be simple flat key:value XML file. <br />
         /// Example:                    <br />
@@ -487,9 +509,9 @@ namespace ScriptStash
             }
         }
 
-        #endregion xml Serialization/Deserialization factory
+#endregion xml Serialization/Deserialization factory
 
-        #region csv Serialization/Deserialization factory
+#region csv Serialization/Deserialization factory
         /// <summary>
         /// Static CSV parsing factory tool. Source file format should be simple flat key:value CSV file. <br />
         /// Example:                <br />
@@ -634,7 +656,7 @@ namespace ScriptStash
             }
         }
 
-        #endregion csv Serialization/Deserialization factory
-        #endregion public methods
+#endregion csv Serialization/Deserialization factory
+#endregion public methods
     }
 }
