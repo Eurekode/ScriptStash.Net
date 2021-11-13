@@ -1,5 +1,5 @@
 # ScriptStash ![ScriptStash Logo](/ScriptStash/package/scriptstash_nuget_logo.png)
-[![Version](https://img.shields.io/badge/nuget-v1.0.1-brightgreen.svg?logo=appveyor&longCache=true&style=plastic)](https://www.nuget.org/packages/ScriptStash.Net)
+[![Version](https://img.shields.io/badge/nuget-v2.0.0-brightgreen.svg?logo=appveyor&longCache=true&style=plastic)](https://www.nuget.org/packages/ScriptStash.Net)
 ## What is ...
 **ScriptStash** is a C# code loader for text/script files manipulation. It loads each script file once. Keeping it stored in-memory, ready to be used for any applicative reuse over and over. Also, it can be used for token-driven scripting (e.g. place in script token for SELECT-SQL table name, changing the query target table dynamically at run-time).
 
@@ -18,16 +18,16 @@ Usage examples:
 ``` C#
   string scriptsFolder = "c:\project\scripts";
   string pattern = "*.sql";
-  string genSelectAllQuery = "select_all_query.sql";
+  string genSelectAllQueryName = "select_all_query.sql";
   string genTemplateTableQuery = "template_table_query.sql";
   :
   :
-  ScriptStash mySqlStash = new ScriptStash(scriptsFolder, pattern);
-  string sqlText1 = myStash[genSelectAllQueryName].Text;
+  Stash mySqlStash = new Stash(scriptsFolder, pattern);
+  string sqlText1 = mySqlStash[genSelectAllQueryName].Text;
   :
-  myStash.Tokens["<table-name>"] = "USERS";
-  myStash.Tokens["<where-clause>"] = "WHERE USER.City='Tel-Aviv";
-  string sqlText2 = myStash[genTemplateTableQuery].InjectTokens();
+  mySqlStash.Tokens["<table-name>"] = "USERS";
+  mySqlStash.Tokens["<where-clause>"] = "WHERE USER.City='Tel-Aviv";
+  string sqlText2 = mySqlStash[genTemplateTableQuery].InjectTokens();
 ``` 
 **[!]** For more indepth example please chek next Gist : [Stash example - SQL queries](https://gist.github.com/Eurekode/50e20e5df20afc8435b2a9a5dcc6fa2c)
 
